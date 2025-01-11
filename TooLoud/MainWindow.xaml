@@ -3,10 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:local="clr-namespace:TooLoud"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        xmlns:utils="clr-namespace:TooLoud.Utils"
+        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="800" Height="400" Width="900"
+        MinWidth="350"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:TitleBar.ExtendViewIntoTitleBar="True"
+        Title="MainWindow">
+    
+    <!--<ui:SimpleStackPanel Margin="12" Spacing="24">
+        <TextBlock Text="My first ModernWPF app" Style="{StaticResource HeaderTextBlockStyle}" />
+        <Button Content="I am a button" />
+        <Button Content="I am an accent button" Style="{StaticResource AccentButtonStyle}" />
+    </ui:SimpleStackPanel>-->
+
+    <ui:NavigationView x:Name="NavView" IsTitleBarAutoPaddingEnabled="False" IsSettingsVisible="False"
+                       IsTabStop="False" 
+                       SelectionChanged="NavView_SelectionChanged" 
+                       IsPaneOpen="True"
+                       BackRequested="NavView_BackRequested"
+                       PaneDisplayMode="Auto"
+                       OpenPaneLength="224" ExpandedModeThresholdWidth="800" CompactModeThresholdWidth="350">
+
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem Content="General" Tag="general">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Settings}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+
+            <ui:NavigationViewItemSeparator />
+
+            <ui:NavigationViewItem Content="PlaceHolder" Tag="general">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Settings}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+        </ui:NavigationView.MenuItems>
+
+        <ui:NavigationView.FooterMenuItems>
+            <ui:NavigationViewItem Content="About" Tag="about">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Info}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+        </ui:NavigationView.FooterMenuItems>
+
+        <Grid>
+            
+        </Grid>
+    </ui:NavigationView>
 </Window>
