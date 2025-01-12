@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TooLoud.Pages;
 
 namespace TooLoud {
     /// <summary>
@@ -52,6 +53,12 @@ namespace TooLoud {
 
         #region Navigation
 
+        private readonly List<Tuple<string, Type>> _pages = new List<Tuple<string, Type>>() {
+            Tuple.Create("general", typeof(GeneralPage)),
+            //Tuple.Create("placeholder", typeof(GeneralSettingsPage)), 
+            Tuple.Create("about", typeof(AboutPage)),
+        };
+
         private void NavView_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args) {
             if (args.SelectedItem != null) {
                 var navItemTag = args.SelectedItemContainer.Tag.ToString();
@@ -61,12 +68,12 @@ namespace TooLoud {
 
         private void NavView_Navigate(string navItemTag, NavigationTransitionInfo info) {
             Trace.WriteLine(navItemTag);
-            //var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
-            //Type pageType = item.PageType;
+            var item = _pages.FirstOrDefault(p => p.Item1.Equals(navItemTag));
+            Type pageType = item.Item2;
 
-            //if (pageType != null && ContentFrame.CurrentSourcePageType != pageType) {
-            //    ContentFrame.Navigate(pageType, null, info);
-            //}
+            if (pageType != null && ContentFrame.CurrentSourcePageType != pageType) {
+                ContentFrame.Navigate(pageType, null, info);
+            }
         }
 
         private void NavView_BackRequested(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewBackRequestedEventArgs args) {

@@ -51,7 +51,28 @@
         </ui:NavigationView.FooterMenuItems>
 
         <Grid>
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <TextBlock x:Name="HeaderBlock" VerticalAlignment="Center"
+                           Margin="12,45,0,11" Style="{DynamicResource TitleTextBlockStyle}" />
+            </Grid>
+            <ui:Frame x:Name="ContentFrame" Grid.Row="1" IsTabStop="True" />
+            <!--<Grid Grid.Row="2" Height="48"
+                  Background="{DynamicResource NavigationViewExpandedPaneBackground}"
+                  Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance},
+                      Path=UIManager.RestartRequired, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Info}"
+                             VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Static resx:Strings.Settings_RestartRequired}" />
+            </Grid>-->
         </Grid>
     </ui:NavigationView>
 </Window>
