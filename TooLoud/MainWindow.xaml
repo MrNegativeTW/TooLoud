@@ -6,17 +6,12 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:local="clr-namespace:TooLoud"
         xmlns:utils="clr-namespace:TooLoud.Utils"
-        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="800" Height="400" Width="900"
+        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="600" Height="400" Width="600"
         MinWidth="350"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="True"
-        Title="MainWindow">
-    
-    <!--<ui:SimpleStackPanel Margin="12" Spacing="24">
-        <TextBlock Text="My first ModernWPF app" Style="{StaticResource HeaderTextBlockStyle}" />
-        <Button Content="I am a button" />
-        <Button Content="I am an accent button" Style="{StaticResource AccentButtonStyle}" />
-    </ui:SimpleStackPanel>-->
+        WindowStartupLocation="CenterScreen"
+        Title="Too Loud">
 
     <ui:NavigationView x:Name="NavView" IsTitleBarAutoPaddingEnabled="False" IsSettingsVisible="False"
                        IsTabStop="False" 
@@ -24,7 +19,7 @@
                        IsPaneOpen="True"
                        BackRequested="NavView_BackRequested"
                        PaneDisplayMode="Auto"
-                       OpenPaneLength="224" ExpandedModeThresholdWidth="800" CompactModeThresholdWidth="350">
+                       OpenPaneLength="200" ExpandedModeThresholdWidth="500" CompactModeThresholdWidth="400">
 
         <ui:NavigationView.MenuItems>
             <ui:NavigationViewItem Content="General" Tag="general">
@@ -35,7 +30,7 @@
 
             <ui:NavigationViewItemSeparator />
 
-            <ui:NavigationViewItem Content="PlaceHolder" Tag="general">
+            <ui:NavigationViewItem Content="PlaceHolder" Tag="placeholder">
                 <ui:NavigationViewItem.Icon>
                     <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Settings}" />
                 </ui:NavigationViewItem.Icon>

@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace TooLoud.Pages {
     /// <summary>
-    /// Interaction logic for AboutPage.xaml
+    /// Interaction logic for PlaceholderPage.xaml
     /// </summary>
-    public partial class AboutPage : Page {
-        public AboutPage() {
+    public partial class PlaceholderPage : Page {
+        public PlaceholderPage() {
             InitializeComponent();
         }
     }

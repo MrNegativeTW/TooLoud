@@ -26,6 +26,9 @@ namespace TooLoud {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+
+            NavView_Navigate("general", new EntranceNavigationTransitionInfo());
         }
 
         protected override void OnActivated(EventArgs e) {
@@ -55,7 +58,7 @@ namespace TooLoud {
 
         private readonly List<Tuple<string, Type>> _pages = new List<Tuple<string, Type>>() {
             Tuple.Create("general", typeof(GeneralPage)),
-            //Tuple.Create("placeholder", typeof(GeneralSettingsPage)), 
+            Tuple.Create("placeholder", typeof(PlaceholderPage)), 
             Tuple.Create("about", typeof(AboutPage)),
         };
 

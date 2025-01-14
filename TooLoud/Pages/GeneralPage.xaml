@@ -11,8 +11,27 @@
       Title="GeneralPage">
 
     <controls:ScrollViewerEx>
-        <ui:SimpleStackPanel Spacing="10" Margin="20">
-            <TextBlock TextWrapping="Wrap" Text="GeneralPage!!!" />
-        </ui:SimpleStackPanel>
+        <StackPanel Margin="20,10">
+            <GroupBox Header="Section Title 1">
+                <ui:SimpleStackPanel Spacing="10">
+                    
+                    <ui:ToggleSwitch Header="開機自動啟動" />
+                    
+                    <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Slider ui:ControlHelper.Header="最大音量"
+                            Minimum="0" Maximum="100" HorizontalAlignment="Left"
+                            AutoToolTipPlacement="TopLeft" Width="240"
+                            IsMoveToPointEnabled="True" Value="50" />
+                        <!--<TextBlock Style="{DynamicResource BaseTextBlockStyle}"
+                               VerticalAlignment="Center" Margin="0,22,0,0">
+                            <Run Text="{Binding Path=UIManager.FlyoutBackgroundOpacity, StringFormat={}{0:#0}%}" />
+                        </TextBlock>-->
+                    </ui:SimpleStackPanel>
+                </ui:SimpleStackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Section Title 2">
+            </GroupBox>
+        </StackPanel>
     </controls:ScrollViewerEx>
 </Page>

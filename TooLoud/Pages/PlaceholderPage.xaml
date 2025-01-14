@@ -1,4 +1,4 @@
-﻿<Page x:Class="TooLoud.Pages.AboutPage"
+﻿<Page x:Class="TooLoud.Pages.PlaceholderPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,11 +8,11 @@
       xmlns:controls="clr-namespace:TooLoud.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AboutPage">
+      Title="PlaceholderPage">
 
     <controls:ScrollViewerEx>
-        <ui:SimpleStackPanel Spacing="10" Margin="20">
-            <TextBlock TextWrapping="Wrap" Text="About Page" />
+        <ui:SimpleStackPanel Spacing="10" Margin="64">
+            <TextBlock TextWrapping="Wrap" Text="Placeholder Page" />
         </ui:SimpleStackPanel>
     </controls:ScrollViewerEx>
 </Page>

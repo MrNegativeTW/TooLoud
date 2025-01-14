@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace TooLoud.Pages {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for GeneralPage.xaml
     /// </summary>
     public partial class GeneralPage : Page {
         public GeneralPage() {
