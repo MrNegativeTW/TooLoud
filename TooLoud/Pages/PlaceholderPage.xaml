@@ -11,8 +11,12 @@
       Title="PlaceholderPage">
 
     <controls:ScrollViewerEx>
-        <ui:SimpleStackPanel Spacing="10" Margin="64">
-            <TextBlock TextWrapping="Wrap" Text="Placeholder Page" />
-        </ui:SimpleStackPanel>
+        <StackPanel Margin="20,10">
+            <GroupBox Header="Section Title">
+                <ui:SimpleStackPanel Spacing="10">
+                    <TextBlock TextWrapping="Wrap" Text="Placeholder Text" />
+                </ui:SimpleStackPanel>
+            </GroupBox>
+        </StackPanel>
     </controls:ScrollViewerEx>
 </Page>

@@ -11,5 +11,15 @@ namespace TooLoud {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        public App() {
+            InitializeComponent();
+            Startup += App_Startup;
+            //JumpListHelper.CreateJumpList();
+        }
+
+        private void App_Startup(object sender, StartupEventArgs e) {
+            TooLoudHandler.Instance = new TooLoudHandler();
+            TooLoudHandler.Instance.Initialize();
+        }
     }
 }

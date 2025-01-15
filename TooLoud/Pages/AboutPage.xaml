@@ -11,8 +11,12 @@
       Title="AboutPage">
 
     <controls:ScrollViewerEx>
-        <ui:SimpleStackPanel Spacing="10" Margin="20">
-            <TextBlock TextWrapping="Wrap" Text="About Page" />
-        </ui:SimpleStackPanel>
+        <StackPanel Margin="20,10">
+            <GroupBox Header="Too Loud">
+                <ui:SimpleStackPanel Spacing="10">
+                    <TextBlock TextWrapping="Wrap" Text="Fuck Logitech K580." />
+                </ui:SimpleStackPanel>
+            </GroupBox>
+        </StackPanel>
     </controls:ScrollViewerEx>
 </Page>
