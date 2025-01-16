@@ -42,7 +42,9 @@ namespace TooLoud.Helpers {
                         //}
                     }
                 }
-            } catch { }
+            } catch (Exception ex) {
+                Trace.WriteLine($"GetValue({propertyName}) failed: {ex.Message}");
+            }
 
             return defaultValue;
         }
@@ -50,21 +52,56 @@ namespace TooLoud.Helpers {
         internal static void SetValue<T>(T value, [CallerMemberName] string propertyName = "") {
             try {
                 ApplicationData.Current.LocalSettings.Values[propertyName] = value.ToString();
-            } catch { }
+            } catch (Exception ex) {
+                Trace.WriteLine($"SetValue({propertyName}) failed: {ex.Message}");
+            }
         }
 
         internal static async Task ClearAppDataAsync() {
             try {
                 Trace.WriteLine("ClearAppDataAsync called");
                 //await ApplicationData.Current.ClearAsync();
-            } catch { }
+            } catch (Exception ex) {
+                Trace.WriteLine($"ClearAppDataAsync failed: {ex.Message}");
+            }
         }
 
         internal static void SavePropertyValue(string value, string propertyName = "") {
             try {
                 ApplicationData.Current.LocalSettings.Values[propertyName] = value;
-            } catch { }
+            } catch (Exception ex) {
+                Trace.WriteLine($"SavePropertyValue({propertyName}) failed: {ex.Message}");
+            }
         }
+
+        #endregion
+
+        #region Properties
+
+        #region General
+
+        public static bool RunOnStartupEnabled {
+            get => GetValue(DefaultValuesStore.RunOnStartupEnabled);
+            set => SetValue(value);
+        }
+
+        public static bool ProtectionEnabled {
+            get => GetValue(DefaultValuesStore.ProtectionEnabled);
+            set => SetValue(value);
+        }
+
+        public static int MainMaximunVolumn {
+            get => GetValue(DefaultValuesStore.MainMaximunVolumn);
+            set => SetValue(value);
+        }
+
+        #endregion
+
+        #region Placeholder
+
+        //...
+
+        #endregion
 
         #endregion
     }

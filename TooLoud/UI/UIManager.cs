@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TooLoud.Helpers;
 
 namespace TooLoud.UI {
     public class UIManager : ObservableObject {
@@ -22,8 +23,7 @@ namespace TooLoud.UI {
         //    }
         //}
 
-        //private bool runOnStartupEnabled = DefaultValuesStore.RunOnStartupEnabled;
-        private bool runOnStartupEnabled = false;
+        private bool runOnStartupEnabled = DefaultValuesStore.RunOnStartupEnabled;
 
         public bool RunOnStartupEnabled {
             get => runOnStartupEnabled;
@@ -34,7 +34,18 @@ namespace TooLoud.UI {
             }
         }
 
-        private int mainMaximunVolumn = 20;
+        private bool protectionEnabled = DefaultValuesStore.ProtectionEnabled;
+
+        public bool ProtectionEnabled {
+            get => protectionEnabled;
+            set {
+                if (SetProperty(ref protectionEnabled, value)) {
+                    OnProtectionEnabledChanged();
+                }
+            }
+        }
+
+        private int mainMaximunVolumn = DefaultValuesStore.MainMaximunVolumn;
 
         public int MainMaximunVolumn {
             get => mainMaximunVolumn;
@@ -48,15 +59,24 @@ namespace TooLoud.UI {
         #endregion
 
         public void Initialize() {
-
+            RunOnStartupEnabled = AppDataHelper.RunOnStartupEnabled;
+            ProtectionEnabled = AppDataHelper.ProtectionEnabled;
+            MainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
         }
 
         private void OnRunOnStartupChanged() {
-            //UpdateFlyoutBackgroundOpacity();
-            //AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
+            //TrayIconManager.UpdateTrayIconVisibility(trayIconEnabled);
+            Trace.WriteLine("OnRunOnStartupChanged() called");
+            AppDataHelper.RunOnStartupEnabled = RunOnStartupEnabled;
+        }
+
+        private void OnProtectionEnabledChanged() {
+            Trace.WriteLine("OnProtectionEnabledChanged() called");
+            AppDataHelper.ProtectionEnabled = ProtectionEnabled;
         }
 
         private void OnMainMaximunVolmunChanged() {
+            Trace.WriteLine("OnMainMaximunVolmunChanged() called");
             //UpdateFlyoutBackgroundOpacity();
             //AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
         }

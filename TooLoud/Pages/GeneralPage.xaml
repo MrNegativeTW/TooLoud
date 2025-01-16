@@ -17,12 +17,12 @@
                 <ui:SimpleStackPanel Spacing="10">
                     
                     <ui:ToggleSwitch Header="Run on startup"
-                                     IsOn="{Binding UIManager.TrayIconEnabled}"
+                                     IsOn="{Binding UIManager.RunOnStartupEnabled}"
                                      OnContent="Enabled"
                                      OffContent="Disabled" />
 
                     <ui:ToggleSwitch Header="Enable?"
-                                     IsOn="{Binding UIManager.TrayIconEnabled}"
+                                     IsOn="{Binding UIManager.ProtectionEnabled}"
                                      OnContent="Enabled"
                                      OffContent="Disabled" />
                 </ui:SimpleStackPanel>
