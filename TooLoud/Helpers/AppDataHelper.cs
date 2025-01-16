@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -33,11 +34,12 @@ namespace TooLoud.Helpers {
                             }
                         } else if (typeof(T).IsEnum) {
                             return (T)Enum.Parse(typeof(T), value);
-                        } else if (typeof(T) == typeof(BindablePoint)) {
-                            if (BindablePoint.TryParse(value, out BindablePoint result)) {
-                                return (T)(object)result;
-                            }
-                        }
+                        } 
+                        //else if (typeof(T) == typeof(BindablePoint)) {
+                        //    if (BindablePoint.TryParse(value, out BindablePoint result)) {
+                        //        return (T)(object)result;
+                        //    }
+                        //}
                     }
                 }
             } catch { }
@@ -53,7 +55,8 @@ namespace TooLoud.Helpers {
 
         internal static async Task ClearAppDataAsync() {
             try {
-                await ApplicationData.Current.ClearAsync();
+                Trace.WriteLine("ClearAppDataAsync called");
+                //await ApplicationData.Current.ClearAsync();
             } catch { }
         }
 

@@ -22,7 +22,8 @@ namespace TooLoud.UI {
         //    }
         //}
 
-        private bool runOnStartupEnabled = DefaultValuesStore.TrayIconEnabled;
+        //private bool runOnStartupEnabled = DefaultValuesStore.RunOnStartupEnabled;
+        private bool runOnStartupEnabled = false;
 
         public bool RunOnStartupEnabled {
             get => runOnStartupEnabled;
