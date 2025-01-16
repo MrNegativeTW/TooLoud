@@ -16,16 +16,22 @@
             <GroupBox Header="行為">
                 <ui:SimpleStackPanel Spacing="10">
                     
-                    <ui:ToggleSwitch Header="開機啟動" />
+                    <ui:ToggleSwitch Header="Run on startup"
+                                     IsOn="{Binding UIManager.TrayIconEnabled}"
+                                     OnContent="Enabled"
+                                     OffContent="Disabled" />
 
-                    <ui:ToggleSwitch Header="啟用" />
+                    <ui:ToggleSwitch Header="Enable?"
+                                     IsOn="{Binding UIManager.TrayIconEnabled}"
+                                     OnContent="Enabled"
+                                     OffContent="Disabled" />
                 </ui:SimpleStackPanel>
             </GroupBox>
 
             <GroupBox Header="音量">
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <Slider ui:ControlHelper.Header="最大音量"
+                        <Slider ui:ControlHelper.Header="Max Volumn Limit"
                                 Minimum="0" Maximum="100" HorizontalAlignment="Left" 
                                 AutoToolTipPlacement="TopLeft" Width="240" 
                                 IsMoveToPointEnabled="True" Value="{Binding UIManager.MainMaximunVolumn}" />

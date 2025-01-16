@@ -22,6 +22,17 @@ namespace TooLoud.UI {
         //    }
         //}
 
+        private bool runOnStartupEnabled = DefaultValuesStore.TrayIconEnabled;
+
+        public bool RunOnStartupEnabled {
+            get => runOnStartupEnabled;
+            set {
+                if (SetProperty(ref runOnStartupEnabled, value)) {
+                    OnRunOnStartupChanged();
+                }
+            }
+        }
+
         private int mainMaximunVolumn = 20;
 
         public int MainMaximunVolumn {
@@ -37,6 +48,11 @@ namespace TooLoud.UI {
 
         public void Initialize() {
 
+        }
+
+        private void OnRunOnStartupChanged() {
+            //UpdateFlyoutBackgroundOpacity();
+            //AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
         }
 
         private void OnMainMaximunVolmunChanged() {

@@ -95,6 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\ScrollViewerEx.cs" />
+    <Compile Include="Helpers\AppDataHelper.cs" />
     <Compile Include="Helpers\ScrollViewerHelperEx.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
