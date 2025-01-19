@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TooLoud.Helpers;
+using Windows.Storage;
 
 namespace TooLoud.UI {
     public class UIManager : ObservableObject {
@@ -51,7 +52,7 @@ namespace TooLoud.UI {
             get => mainMaximunVolumn;
             set {
                 if (SetProperty(ref mainMaximunVolumn, value)) {
-                    OnMainMaximunVolmunChanged();
+                    OnMainMaximunVolmunChanged(value);
                 }
             }
         }
@@ -65,20 +66,19 @@ namespace TooLoud.UI {
         }
 
         private void OnRunOnStartupChanged() {
-            //TrayIconManager.UpdateTrayIconVisibility(trayIconEnabled);
             Trace.WriteLine("OnRunOnStartupChanged() called");
-            AppDataHelper.RunOnStartupEnabled = RunOnStartupEnabled;
+            AppDataHelper.RunOnStartupEnabled = runOnStartupEnabled;
         }
 
         private void OnProtectionEnabledChanged() {
             Trace.WriteLine("OnProtectionEnabledChanged() called");
-            AppDataHelper.ProtectionEnabled = ProtectionEnabled;
+            AppDataHelper.ProtectionEnabled = protectionEnabled;
         }
 
-        private void OnMainMaximunVolmunChanged() {
-            Trace.WriteLine("OnMainMaximunVolmunChanged() called");
+        private void OnMainMaximunVolmunChanged(int volumn) {
+            Trace.WriteLine($"OnMainMaximunVolmunChanged({volumn}) called");
             //UpdateFlyoutBackgroundOpacity();
-            //AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
+            AppDataHelper.MainMaximunVolumn = mainMaximunVolumn;
         }
     }
 }
