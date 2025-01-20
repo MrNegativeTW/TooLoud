@@ -33,9 +33,7 @@ namespace TooLoud {
 
             #region Initiate Helpers
 
-            AudioHelper = new AudioHelper() { 
-                IsEnabled = adEnabled 
-            };
+            AudioHelper = new AudioHelper() { IsEnabled = adEnabled };
 
             #endregion
         }

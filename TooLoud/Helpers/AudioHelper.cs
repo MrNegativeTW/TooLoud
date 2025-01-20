@@ -11,6 +11,7 @@ using Windows.Media.Protection.PlayReady;
 namespace TooLoud.Helpers {
     public class AudioHelper : TooLoudHelperBase {
 
+        private AudioDeviceNotificationClient client;
         private MMDeviceEnumerator enumerator;
         private MMDevice device;
 
@@ -25,16 +26,47 @@ namespace TooLoud.Helpers {
         }
 
         public void Initialize() {
-            enumerator = new MMDeviceEnumerator();
-            //enumerator.RegisterEndpointNotificationCallback(client);
-
             mainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
+
+            client = new AudioDeviceNotificationClient();
+
+            enumerator = new MMDeviceEnumerator();
+            enumerator.RegisterEndpointNotificationCallback(client);
 
             if (enumerator.HasDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia)) {
                 UpdateDevice(enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia));
             }
+
+            OnEnabled();
         }
 
+
+        protected override void OnEnabled() {
+            base.OnEnabled();
+            if (IsEnabled == false) { return; }
+
+            client.DefaultDeviceChanged += Client_DefaultDeviceChanged;
+
+            if (device != null) {
+                device.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
+                //PrimaryContent = volumeControl;
+            }
+        }
+
+        protected override void OnDisabled() {
+            base.OnDisabled();
+
+            client.DefaultDeviceChanged -= Client_DefaultDeviceChanged;
+
+            if (device != null) {
+                device.AudioEndpointVolume.OnVolumeNotification -= AudioEndpointVolume_OnVolumeNotification;
+            }
+        }
+
+        private void Client_DefaultDeviceChanged(object sender, string e) {
+            MMDevice mmdevice = string.IsNullOrEmpty(e) ? null : enumerator.GetDevice(e);
+            UpdateDevice(mmdevice);
+        }
 
         private void UpdateDevice(MMDevice mmdevice) {
             if (device != null) {
@@ -55,7 +87,7 @@ namespace TooLoud.Helpers {
                 //Application.Current.Dispatcher.Invoke(() => PrimaryContent = noDeviceMessageBlock);
             }
         }
-
+          
         private void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data) {
             UpdateVolume(data.MasterVolume * 100);
         }
