@@ -1,12 +1,12 @@
-English | [繁體中文](README.zh-TW.md)
+繁體中文 | [English](README.zh-TW.md)
 
 <div align="center">
   
 <img src="https://fakeimg.pl/128x128?text=PlaceHolder" width="128" height="128">
 
-<h1>Too Loud</h1>
+<h1>你在大聲什麼啦</h1>
 <h4>
-A Windows app that limits your max volume
+一個限制最大音量的 Windows 程式
 </h4>
 
 ![](https://img.shields.io/badge/.net-9-blue.svg?style=flat-square)
@@ -26,16 +26,16 @@ A Windows app that limits your max volume
 
 ## Features
 
-- Prevent accidentally turning up the volume on Windows
-- Maintains volume limits even when the audio output device changes
+- 保護耳朵，避免意外將音量調到超大聲
+- 切換聲音輸出裝置後仍可維持限制
 
 ### Background
 
-This project was inspired by an issue with the Logitech K580 keyboard. When adjusting the volume using its keys, the keyboard frequently causes the volume to repeat uncontrollably, spiking to extreme levels. This was particularly problematic when wearing headphones, as my usual volume range is between 4 and 12 — a sudden jump could be damaging.
+此專案的靈感來自於我在使用 Logitech K580 鍵盤時遇到的一個問題。當透過其音量按鍵調整音量時，鍵盤經常會導致音量無限制地連續重複，音量飆升到極高的程度。這對於佩戴耳機時尤為麻煩，因為我的常用音量範圍在 4 到 12 之間，而音量的突然飆升可能會對聽力造成損害。
 
-Attempts to resolve this issue through Logitech's support were unsuccessful, leading me to create this solution.
+羅技客服根本沒用，所以這個專案就誕生了
 
-**🖕 FUCK LOGITECH**
+**🖕 幹你羅技**
 
 ## Installation
 
