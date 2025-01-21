@@ -16,8 +16,18 @@ namespace TooLoud {
 
         public AudioHelper AudioHelper { get; set; }
 
-        // ...
         public UIManager UIManager { get; set; }
+
+        private bool runAtStartup;
+
+        public bool RunAtStartup {
+            get => runAtStartup;
+            set {
+                if (SetProperty(ref runAtStartup, value)) {
+                    OnRunAtStartupChanged();
+                }
+            }
+        }
 
         #endregion
 
@@ -29,6 +39,12 @@ namespace TooLoud {
 
             var adEnabled = AppDataHelper.ProtectionEnabled;
 
+            async void getStartupStatus() {
+                //RunAtStartup = await StartupHelper.GetRunAtStartupEnabled();
+                RunAtStartup = StartupHelper.GetRunAtStartupEnabled("TooLoud");
+            }
+            getStartupStatus();
+
             #endregion
 
             #region Initiate Helpers
@@ -36,6 +52,11 @@ namespace TooLoud {
             AudioHelper = new AudioHelper() { IsEnabled = adEnabled };
 
             #endregion
+        }
+
+        private void OnRunAtStartupChanged() {
+            //StartupHelper.SetRunAtStartupEnabled(runAtStartup);
+            StartupHelper.SetRunAtStartupEnabled("TooLoud");
         }
     }
 }

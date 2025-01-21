@@ -13,28 +13,6 @@ namespace TooLoud.UI {
 
         #region GeneralPage
 
-        //private double flyoutBackgroundOpacity = DefaultValuesStore.FlyoutBackgroundOpacity;
-
-        //public double FlyoutBackgroundOpacity {
-        //    get => flyoutBackgroundOpacity;
-        //    set {
-        //        if (SetProperty(ref flyoutBackgroundOpacity, value)) {
-        //            OnFlyoutBackgroundOpacityChanged();
-        //        }
-        //    }
-        //}
-
-        private bool runOnStartupEnabled = DefaultValuesStore.RunOnStartupEnabled;
-
-        public bool RunOnStartupEnabled {
-            get => runOnStartupEnabled;
-            set {
-                if (SetProperty(ref runOnStartupEnabled, value)) {
-                    OnRunOnStartupChanged();
-                }
-            }
-        }
-
         private bool protectionEnabled = DefaultValuesStore.ProtectionEnabled;
 
         public bool ProtectionEnabled {
@@ -60,14 +38,8 @@ namespace TooLoud.UI {
         #endregion
 
         public void Initialize() {
-            RunOnStartupEnabled = AppDataHelper.RunOnStartupEnabled;
             ProtectionEnabled = AppDataHelper.ProtectionEnabled;
             MainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
-        }
-
-        private void OnRunOnStartupChanged() {
-            Trace.WriteLine("OnRunOnStartupChanged() called");
-            AppDataHelper.RunOnStartupEnabled = runOnStartupEnabled;
         }
 
         private void OnProtectionEnabledChanged() {

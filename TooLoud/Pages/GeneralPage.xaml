@@ -17,7 +17,7 @@
                 <ui:SimpleStackPanel Spacing="10">
                     
                     <ui:ToggleSwitch Header="Run on startup"
-                                     IsOn="{Binding UIManager.RunOnStartupEnabled}"
+                                     IsOn="{Binding RunAtStartup}"
                                      OnContent="Enabled"
                                      OffContent="Disabled" />
 
