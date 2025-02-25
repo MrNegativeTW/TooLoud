@@ -40,6 +40,8 @@ namespace TooLoud.UI {
         public void Initialize() {
             ProtectionEnabled = AppDataHelper.ProtectionEnabled;
             MainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
+
+            TrayIconManager.SetupTrayIcon();
         }
 
         private void OnProtectionEnabledChanged() {

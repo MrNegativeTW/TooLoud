@@ -9,6 +9,8 @@ namespace TooLoud.Utils {
 
         public const string Settings = "\uE115";
 
+        public const string PowerButton = "\uE7E8";
+
         public const string Info = "\uE946";
     }
 }

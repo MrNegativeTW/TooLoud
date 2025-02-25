@@ -9,6 +9,8 @@ namespace TooLoud.Helpers {
 
         #region General
 
+        public const string AppName = "TooLoud";
+
         public const bool RunOnStartupEnabled = false;
 
         public const bool ProtectionEnabled = true;

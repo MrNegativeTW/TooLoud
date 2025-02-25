@@ -34,7 +34,7 @@ namespace TooLoud.Helpers {
                             }
                         } else if (typeof(T).IsEnum) {
                             return (T)Enum.Parse(typeof(T), value);
-                        } 
+                        }
                         //else if (typeof(T) == typeof(BindablePoint)) {
                         //    if (BindablePoint.TryParse(value, out BindablePoint result)) {
                         //        return (T)(object)result;
@@ -43,7 +43,8 @@ namespace TooLoud.Helpers {
                     }
                 }
             } catch (Exception ex) {
-                Trace.WriteLine($"GetValue({propertyName}) failed: {ex.Message}");
+                //Trace.WriteLine($"GetValue({propertyName}) failed: {ex.Message}");
+                // TODO: ApplicationData unusable
             }
 
             return defaultValue;
@@ -53,16 +54,18 @@ namespace TooLoud.Helpers {
             try {
                 ApplicationData.Current.LocalSettings.Values[propertyName] = value.ToString();
             } catch (Exception ex) {
-                Trace.WriteLine($"SetValue({propertyName}) failed: {ex.Message}");
+                //Trace.WriteLine($"SetValue({propertyName}) failed: {ex.Message}");
+                // TODO: ApplicationData unusable
             }
         }
 
         internal static async Task ClearAppDataAsync() {
             try {
                 Trace.WriteLine("ClearAppDataAsync called");
-                //await ApplicationData.Current.ClearAsync();
+                //await Windows.Storage.ApplicationData.Current.ClearAsync();
             } catch (Exception ex) {
-                Trace.WriteLine($"ClearAppDataAsync failed: {ex.Message}");
+                //Trace.WriteLine($"ClearAppDataAsync failed: {ex.Message}");
+                // TODO: ApplicationData unusable
             }
         }
 
@@ -70,7 +73,8 @@ namespace TooLoud.Helpers {
             try {
                 ApplicationData.Current.LocalSettings.Values[propertyName] = value;
             } catch (Exception ex) {
-                Trace.WriteLine($"SavePropertyValue({propertyName}) failed: {ex.Message}");
+                //Trace.WriteLine($"SavePropertyValue({propertyName}) failed: {ex.Message}");
+                // TODO: ApplicationData unusable
             }
         }
 
