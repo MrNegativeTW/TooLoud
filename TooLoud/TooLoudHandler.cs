@@ -20,6 +20,7 @@ namespace TooLoud {
         public static TooLoudHandler Instance { get; set; }
 
         public static bool HasInitialized { get; private set; }
+        public MainWindow MainWindow { get; set; }
 
         public AudioHelper AudioHelper { get; set; }
 
@@ -82,13 +83,12 @@ namespace TooLoud {
         }
 
         public static void ShowSettingsWindow() {
-            Trace.WriteLine("ShowSettingsWindow() called, Not yet implemented");
-            //Application.Current.Dispatcher.Invoke(() => {
-            //    Instance.SettingsWindow ??= new SettingsWindow();
-            //    Instance.SettingsWindow.Show();
-            //    Instance.SettingsWindow.Activate();
-            //    Instance.SettingsWindow.Focus();
-            //});
+            Application.Current.Dispatcher.Invoke(() => {
+                Instance.MainWindow ??= new MainWindow();
+                Instance.MainWindow.Show();
+                Instance.MainWindow.Activate();
+                Instance.MainWindow.Focus();
+            });
         }
 
         public static void SafelyExitApplication() {

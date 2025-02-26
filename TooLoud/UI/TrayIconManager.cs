@@ -4,6 +4,7 @@ using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using TooLoud.Helpers;
 using TooLoud.Utils;
 
@@ -18,15 +19,15 @@ namespace TooLoud.UI {
 
         public static void SetupTrayIcon() {
             var settingsItem = new MenuItem() {
-                Header = "Properties.Strings.SettingsItem",
-                ToolTip = "Properties.Strings.SettingsItemDescription",
+                Header = "Settings",
+                //ToolTip = "Properties.Strings.SettingsItemDescription",
                 Icon = new FontIcon() { Glyph = CommonGlyphs.Settings },
                 Command = CommonCommands.OpenSettingsWindowCommand
             };
 
             var exitItem = new MenuItem() {
-                Header = "Properties.Strings.ExitItem",
-                ToolTip = "Properties.Strings.ExitItemDescription",
+                Header = "Quit TooLoud",
+                //ToolTip = "Properties.Strings.ExitItemDescription",
                 Icon = new FontIcon() { Glyph = CommonGlyphs.PowerButton },
                 Command = CommonCommands.ExitAppCommand
             };
@@ -59,7 +60,7 @@ namespace TooLoud.UI {
                 iconUri = Helpers.PackUriHelper.GetAbsoluteUri(currentTheme == ElementTheme.Light ? @"Assets\Logo_Tray_Black.ico" : @"Assets\Logo_Tray_White.ico");
             }
 
-            //TaskbarIcon.IconSource = BitmapFrame.Create(iconUri);
+            TaskbarIcon.IconSource = BitmapFrame.Create(iconUri);
         }
     }
 }
