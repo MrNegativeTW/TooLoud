@@ -3,6 +3,7 @@ using ModernWpf;
 using ModernWpf.Controls;
 using System;
 using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using TooLoud.Helpers;
@@ -45,8 +46,12 @@ namespace TooLoud.UI {
             };
         }
 
-        public static void Hello() {
-            Trace.WriteLine("Hello from TrayIconManager");
+        /**
+         * <summary>Show/Hide the tray icon, configurable by user.</summary>
+         * <param name="isVisible">The visibility of the tray icon.</param>
+         */
+        public static void UpdateTrayIconVisibility(bool isVisible) {
+            TaskbarIcon.Visibility = isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public static void UpdateTrayIconInternal(ElementTheme currentTheme, bool useColoredTrayIcon) {
@@ -55,7 +60,7 @@ namespace TooLoud.UI {
 
             Uri iconUri;
             if (useColoredTrayIcon) {
-                iconUri = Helpers.PackUriHelper.GetAbsoluteUri(@"Assets\Logo.ico");
+                iconUri = PackUriHelper.GetAbsoluteUri(@"Assets\Logo.ico");
             } else {
                 iconUri = Helpers.PackUriHelper.GetAbsoluteUri(currentTheme == ElementTheme.Light ? @"Assets\Logo_Tray_Black.ico" : @"Assets\Logo_Tray_White.ico");
             }

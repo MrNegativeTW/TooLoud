@@ -82,6 +82,14 @@ namespace TooLoud.Helpers {
 
         #region Properties
 
+        #region Theme
+        public static bool UseColoredTrayIcon {
+            get => GetValue(DefaultValuesStore.UseColoredTrayIcon);
+            set => SetValue(value);
+        }
+
+        #endregion
+
         #region General
 
         public static bool RunOnStartupEnabled {

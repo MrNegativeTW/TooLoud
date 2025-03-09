@@ -13,7 +13,7 @@
 
     <controls:ScrollViewerEx>
         <StackPanel Margin="20,10">
-            <GroupBox Header="行為">
+            <GroupBox Header="Behavior">
                 <ui:SimpleStackPanel Spacing="10">
                     
                     <ui:ToggleSwitch Header="Run on startup"
@@ -28,10 +28,10 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
 
-            <GroupBox Header="音量">
+            <GroupBox Header="Volume">
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <Slider ui:ControlHelper.Header="Max Volumn Limit"
+                        <Slider ui:ControlHelper.Header="Max Volume Limit"
                                 Minimum="0" Maximum="100" HorizontalAlignment="Left" 
                                 AutoToolTipPlacement="TopLeft" Width="240" 
                                 IsMoveToPointEnabled="True" Value="{Binding UIManager.MainMaximunVolumn}" />

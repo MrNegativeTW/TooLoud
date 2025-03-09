@@ -15,7 +15,14 @@ namespace TooLoud.Helpers {
 
         public const bool ProtectionEnabled = true;
 
-        public const int MainMaximunVolumn = 30;
+        public const int MainMaximunVolumn = 10;
+
+        #endregion
+
+        #region Theme
+
+        // aka Colorful Tray Icon, not B&W.
+        public const bool UseColoredTrayIcon = true;
 
         #endregion
     }

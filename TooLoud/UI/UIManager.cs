@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using ModernWpf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,6 +11,24 @@ using Windows.Storage;
 
 namespace TooLoud.UI {
     public class UIManager : ObservableObject {
+
+        #region Themes
+
+        private ElementTheme currentSystemTheme = ElementTheme.Dark;
+
+        private bool _isThemeUpdated;
+
+        private bool useColoredTrayIcon = DefaultValuesStore.UseColoredTrayIcon;
+
+        public bool UseColoredTrayIcon {
+            get => useColoredTrayIcon;
+            set {
+                if (SetProperty(ref useColoredTrayIcon, value)) {
+                    OnUseColoredTrayIconChanged();
+                }
+            }
+        }
+        #endregion
 
         #region GeneralPage
 
@@ -42,6 +61,29 @@ namespace TooLoud.UI {
             MainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
 
             TrayIconManager.SetupTrayIcon();
+
+            SystemTheme.SystemThemeChanged += OnSystemThemeChanged;
+            SystemTheme.Initialize();
+        }
+        private void OnSystemThemeChanged(object sender, SystemThemeChangedEventArgs args) {
+            currentSystemTheme = args.IsSystemLightTheme ? ElementTheme.Light : ElementTheme.Dark;
+            UpdateTheme();
+        }
+
+        private void UpdateTheme() {
+            //ActualFlyoutTheme = flyoutTheme == ElementTheme.Default ? currentSystemTheme : flyoutTheme;
+
+            if (!_isThemeUpdated) {
+                _isThemeUpdated = true;
+            }
+
+            //UpdateFlyoutBackgroundOpacity();
+            UpdateTrayIcon();
+        }
+
+        private void OnUseColoredTrayIconChanged() {
+            UpdateTrayIcon();
+            AppDataHelper.UseColoredTrayIcon = useColoredTrayIcon;
         }
 
         private void OnProtectionEnabledChanged() {
@@ -53,6 +95,12 @@ namespace TooLoud.UI {
             Trace.WriteLine($"OnMainMaximunVolmunChanged({volumn}) called");
             //UpdateFlyoutBackgroundOpacity();
             AppDataHelper.MainMaximunVolumn = mainMaximunVolumn;
+        }
+
+        private void UpdateTrayIcon() {
+            if (!_isThemeUpdated) return;
+
+            TrayIconManager.UpdateTrayIconInternal(currentSystemTheme, useColoredTrayIcon);
         }
     }
 }
