@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Hardcodet.Wpf.TaskbarNotification;
 using ModernWpf;
 using System;
 using System.Collections.Generic;
@@ -43,13 +44,13 @@ namespace TooLoud.UI {
             }
         }
 
-        private int mainMaximunVolumn = DefaultValuesStore.MainMaximunVolumn;
+        private int mainMaximumVolume = DefaultValuesStore.MainMaximumVolume;
 
-        public int MainMaximunVolumn {
-            get => mainMaximunVolumn;
+        public int MainMaximumVolume {
+            get => mainMaximumVolume;
             set {
-                if (SetProperty(ref mainMaximunVolumn, value)) {
-                    OnMainMaximunVolmunChanged(value);
+                if (SetProperty(ref mainMaximumVolume, value)) {
+                    OnMainMaximumVolmueChanged(value);
                 }
             }
         }
@@ -57,14 +58,20 @@ namespace TooLoud.UI {
         #endregion
 
         public void Initialize() {
-            ProtectionEnabled = AppDataHelper.ProtectionEnabled;
-            MainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
+            //ProtectionEnabled = AppDataHelper.ProtectionEnabled;
+            //MainMaximumVolume = AppDataHelper.MainMaximumVolume;
+            ProtectionEnabled = AppSettingsHelper.ProtectionEnabled;
+            MainMaximumVolume = AppSettingsHelper.MainMaximumVolume;
 
             TrayIconManager.SetupTrayIcon();
 
             SystemTheme.SystemThemeChanged += OnSystemThemeChanged;
             SystemTheme.Initialize();
         }
+        public static void Dispose() {
+            TrayIconManager.Dispose();
+        }
+
         private void OnSystemThemeChanged(object sender, SystemThemeChangedEventArgs args) {
             currentSystemTheme = args.IsSystemLightTheme ? ElementTheme.Light : ElementTheme.Dark;
             UpdateTheme();
@@ -83,18 +90,18 @@ namespace TooLoud.UI {
 
         private void OnUseColoredTrayIconChanged() {
             UpdateTrayIcon();
-            AppDataHelper.UseColoredTrayIcon = useColoredTrayIcon;
+            //AppDataHelper.UseColoredTrayIcon = useColoredTrayIcon;
+            AppSettingsHelper.UseColoredTrayIcon = useColoredTrayIcon;
         }
 
         private void OnProtectionEnabledChanged() {
-            Trace.WriteLine("OnProtectionEnabledChanged() called");
-            AppDataHelper.ProtectionEnabled = protectionEnabled;
+            //Trace.WriteLine("OnProtectionEnabledChanged() called");
+            AppSettingsHelper.ProtectionEnabled = protectionEnabled;
         }
 
-        private void OnMainMaximunVolmunChanged(int volumn) {
-            Trace.WriteLine($"OnMainMaximunVolmunChanged({volumn}) called");
-            //UpdateFlyoutBackgroundOpacity();
-            AppDataHelper.MainMaximunVolumn = mainMaximunVolumn;
+        private void OnMainMaximumVolmueChanged(int volume) {
+            //Trace.WriteLine($"OnMainMaximumVolmueChanged({volume}) called");
+            AppSettingsHelper.MainMaximumVolume = mainMaximumVolume;
         }
 
         private void UpdateTrayIcon() {

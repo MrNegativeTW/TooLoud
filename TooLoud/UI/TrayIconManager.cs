@@ -55,6 +55,7 @@ namespace TooLoud.UI {
         }
 
         public static void UpdateTrayIconInternal(ElementTheme currentTheme, bool useColoredTrayIcon) {
+            // TODO: SetRequestedTheme fucked up when theme switched .
             ThemeManager.SetRequestedTheme(TaskbarIconContextMenu, currentTheme);
             ThemeManager.SetRequestedTheme(TaskbarIconToolTip, currentTheme);
 
@@ -62,10 +63,17 @@ namespace TooLoud.UI {
             if (useColoredTrayIcon) {
                 iconUri = PackUriHelper.GetAbsoluteUri(@"Assets\Logo.ico");
             } else {
-                iconUri = Helpers.PackUriHelper.GetAbsoluteUri(currentTheme == ElementTheme.Light ? @"Assets\Logo_Tray_Black.ico" : @"Assets\Logo_Tray_White.ico");
+                iconUri = PackUriHelper.GetAbsoluteUri(currentTheme == ElementTheme.Light ? @"Assets\Logo_Tray_Black.ico" : @"Assets\Logo_Tray_White.ico");
             }
 
             TaskbarIcon.IconSource = BitmapFrame.Create(iconUri);
+        }
+
+        public static void Dispose() {
+            if (TaskbarIcon != null) {
+                TaskbarIcon.Dispose();
+                TaskbarIcon = null;
+            }
         }
     }
 }

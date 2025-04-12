@@ -11,12 +11,20 @@
       Title="AboutPage">
 
     <controls:ScrollViewerEx>
-        <StackPanel Margin="20,10">
-            <GroupBox Header="Too Loud">
-                <ui:SimpleStackPanel Spacing="10">
-                    <TextBlock TextWrapping="Wrap" Text="Fuck Logitech K580." />
-                </ui:SimpleStackPanel>
-            </GroupBox>
-        </StackPanel>
+        <ui:SimpleStackPanel Spacing="10" Margin="20">
+            <TextBlock FontWeight="SemiBold" Style="{DynamicResource TitleTextBlockStyle}"
+                        Text="TooLoud" />
+            <Image Source="/Assets/Logo.ico" HorizontalAlignment="Left" Height="72" />
+            <TextBlock TextWrapping="Wrap" Text="Fuck Logitech" />
+            <TextBlock>
+                <!-- <Run Text="{x:Static resx:Strings.About_Version}" /> -->
+                <TextBlock TextWrapping="Wrap" Text="Version: 1.0.0" />
+                <Bold>
+                    <!-- <Run Text="{x:Static local:Program.AppVersion}" -->
+                </Bold>
+            </TextBlock>
+            <ui:HyperlinkButton Content="GitHub"
+                    NavigateUri="https://github.com/MrNegativeTW/TooLoud" />
+        </ui:SimpleStackPanel>
     </controls:ScrollViewerEx>
 </Page>

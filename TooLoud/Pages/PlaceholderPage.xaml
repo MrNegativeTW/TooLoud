@@ -12,9 +12,9 @@
 
     <controls:ScrollViewerEx>
         <StackPanel Margin="20,10">
-            <GroupBox Header="Section Title">
+            <GroupBox Header="GroupBox.Header">
                 <ui:SimpleStackPanel Spacing="10">
-                    <TextBlock TextWrapping="Wrap" Text="Placeholder Text" />
+                    <TextBlock TextWrapping="Wrap" Text="TextBlock.Text" />
                 </ui:SimpleStackPanel>
             </GroupBox>
         </StackPanel>

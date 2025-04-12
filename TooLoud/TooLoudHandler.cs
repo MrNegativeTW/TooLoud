@@ -57,11 +57,12 @@ namespace TooLoud {
 
             #region App Data
 
-            var adEnabled = AppDataHelper.ProtectionEnabled;
+            //var adEnabled = AppDataHelper.ProtectionEnabled;
+            var adEnabled = AppSettingsHelper.ProtectionEnabled;
 
             async void getStartupStatus() {
                 //RunAtStartup = await StartupHelper.GetRunAtStartupEnabled();
-                RunAtStartup = StartupHelper.GetRunAtStartupEnabled("TooLoud");
+                RunAtStartup = StartupHelper.GetRunAtStartupEnabled();
             }
             getStartupStatus();
 
@@ -69,7 +70,7 @@ namespace TooLoud {
 
             #region Initiate Helpers
 
-            AudioHelper = new AudioHelper() { IsEnabled = adEnabled };
+            AudioHelper = new AudioHelper();
 
             #endregion
 
@@ -79,7 +80,7 @@ namespace TooLoud {
 
         private void OnRunAtStartupChanged() {
             //StartupHelper.SetRunAtStartupEnabled(runAtStartup);
-            StartupHelper.SetRunAtStartupEnabled("TooLoud");
+            StartupHelper.SetRunAtStartupEnabled(runAtStartup);
         }
 
         public static void ShowSettingsWindow() {
@@ -93,6 +94,7 @@ namespace TooLoud {
 
         public static void SafelyExitApplication() {
             //NativeFlyoutHandler.Instance.ShowNativeFlyout();
+            UIManager.Dispose();
             Environment.Exit(0);
         }
     }

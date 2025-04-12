@@ -7,6 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
+/// <summary>
+/// Copied from ModernWpf.Helpers
+/// 
+/// Not work in this case, fuck it whatever, use AppSettingsHelper instead.
+/// 
+/// Windows.Storage.ApplicationData (UWP/WinRT style)
+/// </summary>
 namespace TooLoud.Helpers {
     public class AppDataHelper {
 
@@ -102,8 +109,8 @@ namespace TooLoud.Helpers {
             set => SetValue(value);
         }
 
-        public static int MainMaximunVolumn {
-            get => GetValue(DefaultValuesStore.MainMaximunVolumn);
+        public static int MainMaximumVolume {
+            get => GetValue(DefaultValuesStore.MainMaximumVolume);
             set => SetValue(value);
         }
 

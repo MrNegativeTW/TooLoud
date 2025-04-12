@@ -17,16 +17,28 @@ namespace TooLoud.Helpers {
 
         #region Properties
 
-        private int mainMaximunVolumn;
+        private int mainMaximumVolume;
 
         #endregion
 
         public AudioHelper() {
+            AppSettingsHelper.ProtectionEnabledChanged += OnProtectionEnabledChanged;
+            AppSettingsHelper.MainMaximumVolumeChanged += OnMainMaximumVolumeChanged;
+
             Initialize();
         }
 
+        private void OnProtectionEnabledChanged(object sender, bool enabled) {
+            IsEnabled = enabled;
+        }
+
+        private void OnMainMaximumVolumeChanged(object sender, int volume) {
+            mainMaximumVolume = volume;
+        }
+
         public void Initialize() {
-            mainMaximunVolumn = AppDataHelper.MainMaximunVolumn;
+            //mainMaximumVolume = AppDataHelper.MainMaximumVolume;
+            mainMaximumVolume = AppSettingsHelper.MainMaximumVolume;
 
             client = new AudioDeviceNotificationClient();
 
@@ -36,8 +48,6 @@ namespace TooLoud.Helpers {
             if (enumerator.HasDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia)) {
                 UpdateDevice(enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia));
             }
-
-            OnEnabled();
         }
 
 
@@ -50,6 +60,8 @@ namespace TooLoud.Helpers {
             if (device != null) {
                 device.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
                 //PrimaryContent = volumeControl;
+
+                //UpdateVolume(device.AudioEndpointVolume.MasterVolumeLevelScalar * 100);
             }
         }
 
@@ -93,21 +105,19 @@ namespace TooLoud.Helpers {
         }
 
         private void UpdateVolume(double volume) {
-            Trace.WriteLine($"Curent volume is {volume}");
+            int roundedVolume = (int) Math.Round(volume);
 
-            if (volume > mainMaximunVolumn) {
-                Trace.WriteLine($"{device.AudioEndpointVolume.MasterVolumeLevelScalar}, {(mainMaximunVolumn / 100f)}");
-                if (device.AudioEndpointVolume.MasterVolumeLevelScalar > (mainMaximunVolumn / 100f)) {
-                    device.AudioEndpointVolume.MasterVolumeLevelScalar = mainMaximunVolumn / 100f;
-                }
+            Trace.WriteLine($"OnVolumeNotification: Current/Limit: {roundedVolume}/{mainMaximumVolume}");
+
+            if (roundedVolume <= mainMaximumVolume) {
+                return;
             }
-            //Application.Current.Dispatcher.Invoke(() => {
-            //    UpdateVolumeGlyph(volume);
-            //    volumeControl.textVal.Text = Math.Round(volume).ToString("00");
-            //    _isInCodeValueChange = true;
-            //    volumeControl.VolumeSlider.Value = volume;
-            //    _isInCodeValueChange = false;
-            //});
+
+            float targetVolume = mainMaximumVolume / 100f;
+            float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar;
+            if (currentVolume > targetVolume) {
+                device.AudioEndpointVolume.MasterVolumeLevelScalar = targetVolume;
+            }
         }
     }
 }

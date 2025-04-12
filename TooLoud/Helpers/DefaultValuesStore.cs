@@ -15,7 +15,7 @@ namespace TooLoud.Helpers {
 
         public const bool ProtectionEnabled = true;
 
-        public const int MainMaximunVolumn = 10;
+        public const int MainMaximumVolume = 10;
 
         #endregion
 

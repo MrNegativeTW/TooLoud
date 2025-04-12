@@ -21,5 +21,17 @@ namespace TooLoud.Pages {
         public GeneralPage() {
             InitializeComponent();
         }
+
+        private void MaxVolumeSlider_PreviewMouseWheel(object sender, MouseWheelEventArgs e) {
+            var slider = sender as Slider;
+            if (slider != null) {
+                if (e.Delta > 0)
+                    slider.Value += slider.SmallChange;
+                else
+                    slider.Value -= slider.SmallChange;
+
+                e.Handled = true;
+            }
+        }
     }
 }

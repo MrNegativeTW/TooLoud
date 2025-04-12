@@ -25,11 +25,14 @@ namespace TooLoud {
     /// </summary>
     public partial class MainWindow : Window {
 
+        private const string TAG = "MainWindow";
+
         private bool _isActive;
 
         public MainWindow() {
             InitializeComponent();
 
+            ContentFrame.Navigated += OnNavigated;
 
             NavView_Navigate("general", new EntranceNavigationTransitionInfo());
         }
@@ -73,7 +76,7 @@ namespace TooLoud {
         }
 
         private void NavView_Navigate(string navItemTag, NavigationTransitionInfo info) {
-            Trace.WriteLine(navItemTag);
+            //Trace.WriteLine($"{TAG} NavView_Navigate: {navItemTag}");
             var item = _pages.FirstOrDefault(p => p.Item1.Equals(navItemTag));
             Type pageType = item.Item2;
 
@@ -100,7 +103,24 @@ namespace TooLoud {
             return true;
         }
 
+        private void OnNavigated(object sender, System.Windows.Navigation.NavigationEventArgs e) {
+            //NavView.IsBackEnabled = ContentFrame.CanGoBack;
+            //Type sourcePageType = ContentFrame.SourcePageType;
+            //if (sourcePageType != null) {
+            //    var item = _pages.FirstOrDefault(p => p.PageType == sourcePageType);
 
-        #endregion
+            //    NavView.SelectedItem = NavView.FooterMenuItems
+            //        .OfType<NavigationViewItem>().
+            //        FirstOrDefault(n => n.Tag.Equals(item.Tag)) ??
+            //        NavView.MenuItems
+            //        .OfType<NavigationViewItem>()
+            //        .FirstOrDefault(n => n.Tag.Equals(item.Tag));
+
+                HeaderBlock.Text =
+                    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+            //}
+        }
+
+            #endregion
     }
 }

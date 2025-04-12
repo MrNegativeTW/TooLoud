@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         xmlns:local="clr-namespace:TooLoud"
         xmlns:utils="clr-namespace:TooLoud.Utils"
-        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="600" Height="400" Width="600"
+        mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="600" Height="500" Width="600"
         MinWidth="350"
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:TitleBar.ExtendViewIntoTitleBar="True"
@@ -53,7 +53,7 @@
             </Grid.RowDefinitions>
             <Grid>
                 <TextBlock x:Name="HeaderBlock" VerticalAlignment="Center"
-                           Margin="12,45,0,11" Style="{DynamicResource TitleTextBlockStyle}" />
+                           Margin="20,44,0,12" Style="{DynamicResource TitleTextBlockStyle}" />
             </Grid>
             <ui:Frame x:Name="ContentFrame" Grid.Row="1" IsTabStop="True" />
             <!--<Grid Grid.Row="2" Height="48"

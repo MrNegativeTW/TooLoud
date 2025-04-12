@@ -21,7 +21,7 @@
                                      OnContent="Enabled"
                                      OffContent="Disabled" />
 
-                    <ui:ToggleSwitch Header="Enable?"
+                    <ui:ToggleSwitch Header="Protection"
                                      IsOn="{Binding UIManager.ProtectionEnabled}"
                                      OnContent="Enabled"
                                      OffContent="Disabled" />
@@ -32,13 +32,15 @@
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
                         <Slider ui:ControlHelper.Header="Max Volume Limit"
+                                Value="{Binding UIManager.MainMaximumVolume}"
+                                PreviewMouseWheel="MaxVolumeSlider_PreviewMouseWheel"
                                 Minimum="0" Maximum="100" HorizontalAlignment="Left" 
+                                IsTabStop="True" SmallChange="2" LargeChange="10"
                                 AutoToolTipPlacement="TopLeft" Width="240" 
-                                IsMoveToPointEnabled="True" Value="{Binding UIManager.MainMaximunVolumn}" />
-                        <!--Style="{DynamicResource BaseTextBlockStyle}" TextBlock 的-->
+                                IsMoveToPointEnabled="True"/>
                         <TextBlock 
                                    VerticalAlignment="Center" Margin="0,22,0,0">
-                            <Run Text="{Binding Path=UIManager.MainMaximunVolumn, StringFormat={}{0:#0}%}" />
+                            <Run Text="{Binding Path=UIManager.MainMaximumVolume, StringFormat={}{0:#0}}" />
                         </TextBlock>
                     </ui:SimpleStackPanel>
                 </ui:SimpleStackPanel>
