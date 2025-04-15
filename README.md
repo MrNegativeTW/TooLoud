@@ -2,7 +2,7 @@ English | [繁體中文](README.zh-TW.md)
 
 <div align="center">
   
-<img src="https://fakeimg.pl/128x128?text=PlaceHolder" width="128" height="128">
+<img src="assets/perfection-icon-by-freepik.png" width="128" height="128">
 
 <h1>Too Loud</h1>
 <h4>
@@ -38,6 +38,8 @@ This project was inspired by an issue with the Logitech K580 keyboard. When adju
 Attempts to resolve this issue through Logitech's support were unsuccessful, leading me to create this solution.
 
 **🖕 FUCK LOGITECH**
+
+<img src="assets/shut-meme.png" width="160" height="160">
 
 ## Installation
 

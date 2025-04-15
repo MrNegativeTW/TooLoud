@@ -2,7 +2,7 @@
 
 <div align="center">
   
-<img src="https://fakeimg.pl/128x128?text=PlaceHolder" width="128" height="128">
+<img src="assets/perfection-icon-by-freepik.png" width="128" height="128">
 
 <h1>你在大聲什麼啦</h1>
 <h4>
@@ -38,6 +38,8 @@
 羅技客服根本沒用，所以這個專案就誕生了
 
 **🖕 幹你羅技**
+
+<img src="assets/shut-meme.png" width="160" height="160">
 
 ## Installation
 
