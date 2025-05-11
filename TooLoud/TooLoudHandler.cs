@@ -71,6 +71,7 @@ namespace TooLoud {
             #region Initiate Helpers
 
             AudioHelper = new AudioHelper();
+            AudioHelper.IsEnabled = adEnabled;
 
             #endregion
 
