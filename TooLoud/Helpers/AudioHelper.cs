@@ -26,6 +26,10 @@ namespace TooLoud.Helpers {
             AppSettingsHelper.MainMaximumVolumeChanged += OnMainMaximumVolumeChanged;
 
             Initialize();
+
+            if (IsEnabled) {
+                OnEnabled();
+            }
         }
 
         private void OnProtectionEnabledChanged(object sender, bool enabled) {
